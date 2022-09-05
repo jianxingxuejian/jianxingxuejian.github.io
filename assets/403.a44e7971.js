@@ -1,0 +1,1 @@
+import{_ as t}from"./_plugin-vue_export-helper.cdc0426e.js";import{_ as e}from"./Result.249aa188.js";import{c as _,o as n}from"./index.bb5ee7d4.js";const c={};function r(s,a){const o=e;return n(),_(o,{status:"403",title:"403 \u7981\u6B62\u8BBF\u95EE",size:"huge"})}const i=t(c,[["render",r]]);export{i as default};
