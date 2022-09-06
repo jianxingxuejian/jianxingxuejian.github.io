@@ -1,0 +1,1 @@
+import{_ as t}from"./plugin-vueexport-helper.2444895f.js";import{c as e,o as _}from"./index.ffc2c364.js";import{_ as n}from"./Result.73f6d051.js";const c={};function r(s,a){const o=n;return _(),e(o,{status:"500",title:"500 \u670D\u52A1\u5668\u9519\u8BEF",size:"huge"})}const i=t(c,[["render",r]]);export{i as default};
