@@ -1,5 +1,5 @@
 <template>
-  <div class="h-400px bg-green-3 mt-20px">classify</div>
+  <div>classify</div>
 </template>
 
 <script setup lang="ts"></script>
