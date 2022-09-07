@@ -1,7 +1,7 @@
 /* 滚动条设置 */
 *::-webkit-scrollbar {
-  width: 0.25rem;
-  height: 0.25rem;
+  width: 0.5rem;
+  height: 0.5rem;
 }
 *::-webkit-scrollbar-track-piece {
   background-color: #f8f8f8;

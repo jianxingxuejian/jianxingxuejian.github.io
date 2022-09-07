@@ -1,16 +1,16 @@
 <template>
   <div
-    class="w-screen h-screen px-5% grid lg:grid-cols-[22fr_66fr] 2xl:grid-cols-[18fr_48fr_18fr] gap-x-6"
+    class="px-5% grid lg:grid-cols-[22fr_66fr] 2xl:grid-cols-[18fr_48fr_18fr] gap-x-6"
   >
     <div class="h-0 order-0 grid-col-start-1 grid-col-end-1"></div>
     <layout-main class="order-1 lg:order-2 lg:grid-row-span-2 2xl:grid-row-a" />
     <aside class="order-2 lg:order-1 grid-col-start-1 grid-col-end-1">
       <div class="sticky top-20px">
-        <layout-author class="h-400px bg-red-3 mt-20px" />
-        <layout-classify class="h-400px bg-green-3 mt-20px" />
+        <layout-author />
+        <layout-classify class="mt-20px" />
       </div>
     </aside>
-    <aside class="order-3 items-stretch">
+    <aside class="order-3 h">
       <div class="sticky top-20px">
         <layout-about class="h-400px bg-blue-3 mt-20px" />
         <layout-about class="h-400px bg-blue-3 mt-20px" />
