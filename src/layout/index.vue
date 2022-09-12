@@ -12,8 +12,8 @@
     </aside>
     <aside class="order-3 h">
       <div class="sticky top-20px">
-        <layout-about class="h-400px bg-blue-3 mt-20px" />
-        <layout-about class="h-400px bg-blue-3 mt-20px" />
+        <layout-about class="h-400px mt-20px" />
+        <layout-about class="h-400px mt-20px" />
       </div>
     </aside>
   </div>

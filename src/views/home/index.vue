@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-3000px bg-yellow-2">
+  <div class="w-full h-3000px">
     <span>hello world!</span>
   </div>
 </template>

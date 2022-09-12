@@ -12,4 +12,9 @@
 
 <style lang="scss">
   @import '@/styles/scss/index.scss';
+  #app {
+    background-image: url('./assets/img/20220910_122324.jpg');
+    background-attachment: fixed;
+    object-fit: cover;
+  }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <n-card>
+  <n-card :bordered="false" class="bg-white/50">
     <div class="flex-col items-center">
       <img
         src="https://q1.qlogo.cn/g?b=qq&s=640&nk=975959057"
