@@ -6,8 +6,8 @@
     <layout-main class="order-1 lg:order-2 lg:grid-row-span-2 2xl:grid-row-a" />
     <aside class="order-2 lg:order-1 grid-col-start-1 grid-col-end-1">
       <div class="sticky top-20px">
-        <layout-author />
-        <layout-classify class="mt-20px" />
+        <layout-author class="bg-white/50" />
+        <layout-classify class="mt-20px bg-white/50" />
       </div>
     </aside>
     <aside class="order-3 h">

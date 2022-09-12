@@ -14,7 +14,10 @@
   @import '@/styles/scss/index.scss';
   #app {
     background-image: url('./assets/img/20220910_122324.jpg');
+    background-repeat: no-repeat;
     background-attachment: fixed;
-    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    // background-position: 0% 80%;
   }
 </style>
