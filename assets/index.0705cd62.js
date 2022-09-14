@@ -1,0 +1,1 @@
+import{_ as e}from"./plugin-vueexport-helper.2444895f.js";import{o,t as s,q as t}from"./index.16d0bf66.js";const c={},n={class:"w-full h-3000px"},_=t("span",null,null,-1),r=[_];function a(l,d){return o(),s("div",n,r)}const p=e(c,[["render",a]]);export{p as default};
