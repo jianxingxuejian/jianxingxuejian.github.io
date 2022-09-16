@@ -17,12 +17,13 @@ export default [
     }
   }),
   Components({
-    dirs: ['src/components'],
+    dirs: ['src/components', 'src/pages'],
+    extensions: ['vue', 'md'],
     deep: true,
     directives: true,
     dts: 'src/types/components.d.ts',
     types: [{ from: 'vue-router', names: ['RouterLink', 'RouterView'] }],
-    include: [/\.vue$/, /\.vue\?vue/],
+    include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
     exclude: [/[\\/]node_modules[\\/]/],
     resolvers: [
       NaiveUiResolver(),
