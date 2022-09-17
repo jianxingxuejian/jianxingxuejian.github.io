@@ -1,3 +1,9 @@
+---
+title: 如何定义一个函数
+date: 2022-09-17
+tags: [js]
+---
+
 # 如何定义一个函数
 
 MDN 关于函数的定义与使用 [js 指南-函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions) [js 参考-函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions) [js 参考-函数表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/function)

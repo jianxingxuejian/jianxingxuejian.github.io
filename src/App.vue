@@ -18,6 +18,5 @@
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    // background-position: 0% 80%;
   }
 </style>

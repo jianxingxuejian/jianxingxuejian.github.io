@@ -2,7 +2,7 @@ const routes: Route.Config[] = [
   {
     path: '/',
     name: 'root',
-    redirect: '/home',
+    redirect: '/list',
     meta: { title: 'root' }
   },
   {

@@ -1,5 +1,5 @@
 <template>
-  <n-card title="分类" :bordered="false">
+  <n-card title="分类" :bordered="false" class="bg-white/50">
     <div class="grid grid-cols-2 text-4 text-center">
       <n-a> JavaScript </n-a>
       <n-a> TypeScript </n-a>

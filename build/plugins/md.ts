@@ -1,12 +1,14 @@
 import Markdown from 'vite-plugin-md'
+import code from '@yankeeinlondon/code-builder'
+import link from '@yankeeinlondon/link-builder'
+import meta from '@yankeeinlondon/meta-builder'
 
 export default Markdown({
-  // frontmatterDefaults: {
-  //   requireAuth: false
-  // },
-  // markdownItOptions: {
-  //   html: true,
-  //   linkify: true,
-  //   typographer: true
-  // }
+  builders: [
+    meta(),
+    link(),
+    code({
+      theme: 'base'
+    })
+  ]
 })
