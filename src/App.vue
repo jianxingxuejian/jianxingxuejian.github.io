@@ -12,11 +12,4 @@
 
 <style lang="scss">
   @import '@/styles/scss/index.scss';
-  #app {
-    background-image: url('./assets/img/20220910_122324.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-  }
 </style>
