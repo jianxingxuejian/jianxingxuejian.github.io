@@ -1,7 +1,7 @@
 import pages from '~pages'
 import dayjs from 'dayjs'
 
-const blogs: Array<BlogMeta & { path: string }> = []
+const blogs: BlogInfo[] = []
 
 pages
   .sort((next, pre) =>

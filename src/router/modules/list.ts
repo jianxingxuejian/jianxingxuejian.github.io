@@ -1,7 +1,7 @@
 const routes: Route.Config = {
   path: '/list',
   name: 'list',
-  redirect: '/list/index',
+  redirect: '/list/all',
   component: () => import('@/layouts/default.vue'),
   meta: {
     title: '列表',
@@ -10,7 +10,8 @@ const routes: Route.Config = {
   },
   children: [
     {
-      path: 'index',
+      path: ':tag',
+      props: true,
       name: 'list_index',
       component: () => import('@/views/list/index.vue')
     }

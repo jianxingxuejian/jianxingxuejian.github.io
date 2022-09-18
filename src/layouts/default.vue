@@ -37,15 +37,13 @@
 </script>
 
 <style lang="scss">
-  .aside-left-enter-active {
+  .aside-left-enter-active,
+  .aside-right-enter-active {
     transition: all 1s;
   }
   .aside-left-enter-from {
     opacity: 0;
     transform: translateX(-20rem);
-  }
-  .aside-right-enter-active {
-    transition: all 1s;
   }
   .aside-right-enter-from {
     opacity: 0;

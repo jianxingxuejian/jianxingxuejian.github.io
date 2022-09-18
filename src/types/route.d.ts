@@ -10,6 +10,8 @@ declare namespace Route {
     redirect?: string
     /** 路由组件 */
     component?: import('vue').Component
+    /** 开启props */
+    props?: boolean
   }
 
   /** 路由配置 */

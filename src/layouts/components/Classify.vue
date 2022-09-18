@@ -1,11 +1,38 @@
 <template>
   <n-card title="分类" :bordered="false" class="bg-white/50">
-    <div class="grid grid-cols-2 text-4 text-center">
-      <n-a v-for="item in classify" :key="item"> {{ item }} </n-a>
+    <div class="grid xl:grid-cols-2 text-4 text-center">
+      <n-a
+        v-for="item in classifies"
+        :key="item.name"
+        class="hover:underline"
+        @click="toList(item.tag)"
+      >
+        {{ item.name + '(' + item.num + ')' }}
+      </n-a>
     </div>
   </n-card>
 </template>
 
 <script setup lang="ts">
-  const classify = ['JavaScript', 'TypeScript', 'CSS', 'Vue', 'Vite']
+  import { blogs } from '@/router/pages'
+  import { countBy } from 'lodash-es'
+  import { classifies } from '@/stores'
+
+  classifies.value = [
+    { name: '全部', tag: 'all', num: blogs.length, tagColor: '#fff' },
+    { name: 'JavaScript', tag: 'js', tagColor: '#d3b72f' },
+    { name: 'TypeScript', tag: 'ts', tagColor: '#fff' },
+    { name: 'CSS', tag: 'css', tagColor: '#fff' },
+    { name: 'Vue', tag: 'vue', tagColor: '#fff' },
+    { name: 'Vite', tag: 'vite', tagColor: '#fff' }
+  ]
+  const count = countBy(blogs.map(item => item.tags).flat())
+  classifies.value.slice(1).forEach(item => {
+    item.num = count[item.tag] || 0
+  })
+
+  const router = useRouter()
+  function toList(tag: string) {
+    router.push({ name: 'list_index', params: { tag } })
+  }
 </script>

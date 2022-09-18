@@ -9,3 +9,8 @@ interface BlogMeta {
   /** 标签 */
   tags: string[]
 }
+/** 文章信息 */
+type BlogInfo = BlogMeta & {
+  /** 路径 */
+  path: string
+}
