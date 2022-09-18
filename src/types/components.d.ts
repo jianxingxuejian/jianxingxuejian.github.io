@@ -7,7 +7,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Article: typeof import('./../components/Article.vue')['default']
     HowToDefineFunction: typeof import('./../pages/how-to-define-function.md')['default']
+    IconMdiBookOpenOutline: typeof import('~icons/mdi/book-open-outline')['default']
+    MyTag: typeof import('./../components/MyTag.vue')['default']
     NA: typeof import('naive-ui')['NA']
     NaiveProvider: typeof import('./../components/NaiveProvider.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
@@ -18,6 +21,7 @@ declare module '@vue/runtime-core' {
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
     NResult: typeof import('naive-ui')['NResult']
+    NTag: typeof import('naive-ui')['NTag']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Test: typeof import('./../pages/test.md')['default']
