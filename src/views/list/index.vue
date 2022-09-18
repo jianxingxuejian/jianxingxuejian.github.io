@@ -1,7 +1,7 @@
 <template>
   <n-card
     :bordered="false"
-    class="bg-white/50 lg:min-h-[calc(100vh-40px)] lg:mb-20px"
+    class="bg-white/50 lg:(min-h-[calc(100vh-40px)] mb-20px)"
   >
     <div v-for="item in blogs" :key="item.path" class="flex-col">
       <n-card :title="item.title" class="mb-20px bg-white/80">
@@ -13,7 +13,7 @@
             阅读
           </n-button>
         </template>
-        <div class="flex-evenly">
+        <div class="flex-col ml-8 sm:(flex-evenly flex-row ml-8)">
           <my-tag :tags="item.tags" />
           <div>时间：{{ item.date }}</div>
           <div>字数：{{ item.wordCount }}</div>

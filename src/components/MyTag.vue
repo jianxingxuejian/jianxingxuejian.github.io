@@ -1,7 +1,7 @@
 <template>
   <div class="flex-center">
-    <span>标签：</span>
-    <div class="grow flex-evenly">
+    <span class="shrink-0">标签：</span>
+    <div class="grow flex-start">
       <n-tag
         v-for="item in tags"
         :key="item.name"
