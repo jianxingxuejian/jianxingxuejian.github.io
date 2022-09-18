@@ -3,7 +3,7 @@
     <div class="flex-col items-center">
       <img
         src="https://q1.qlogo.cn/g?b=qq&s=640&nk=975959057"
-        class="b-rd-50% w-50% max-w-25vw"
+        class="b-rd-50% w-50% max-w-25vw select-none"
       />
       <span class="text-6">null</span>
       <span class="text-4">xxxxxxxxxxxxx</span>

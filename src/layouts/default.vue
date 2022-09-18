@@ -4,7 +4,7 @@
   >
     <div class="h-0 order-0 grid-col-start-1 grid-col-end-1"></div>
     <layout-main
-      class="order-1 lg:order-2 lg:grid-row-span-2 2xl:grid-row-a mt-20px"
+      class="order-1 lg:order-2 lg:grid-row-span-2 2xl:grid-row-a mt-20px bg-white/95 p-5"
     />
     <aside class="order-2 lg:order-1 grid-col-start-1 grid-col-end-1">
       <div class="sticky top-20px">

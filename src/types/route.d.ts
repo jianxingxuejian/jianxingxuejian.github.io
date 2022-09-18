@@ -45,28 +45,4 @@ declare namespace Route {
     /** 是否为根节点 */
     isRoot?: boolean
   }
-
-  /** 菜单 */
-  interface Menu {
-    key: string
-    label: string
-    icon?: () => import('vue').VNodeChild
-    children?: Menu[]
-  }
-
-  /** 面包屑 */
-  type Breadcrumb = {
-    key: string
-    label?: string
-    icon?: () => import('vue').VNodeChild
-    hasChildren: boolean
-    children?: Breadcrumb[]
-  }
-
-  /** 多页签 */
-  interface Tab {
-    key: string
-    label: string
-    icon?: () => import('vue').VNodeChild
-  }
 }

@@ -1,6 +1,7 @@
 ---
 title: 如何定义一个函数
 date: 2022-09-17
+wordCount: 1300
 tags: [js]
 ---
 

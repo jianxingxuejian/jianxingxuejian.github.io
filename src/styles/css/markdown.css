@@ -1,0 +1,32 @@
+html {
+  overflow-y: overlay;
+}
+
+html.dark .shiki-light {
+  display: none;
+}
+
+html:not(.dark) .shiki-dark {
+  display: none;
+}
+
+.prose a {
+  font-weight: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(125, 125, 125, 0.3);
+  transition: border 0.3s ease-in-out;
+  color: #3e96e9;
+}
+
+.prose a:hover {
+  border-bottom: 1px solid #666;
+}
+
+.prose pre {
+  overflow-x: auto;
+}
+
+.prose .shiki {
+  font-size: 1em;
+  line-height: 1.4;
+}

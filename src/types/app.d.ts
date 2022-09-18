@@ -1,9 +1,11 @@
-/** 请求结果 */
-interface ApiResult<T = any> {
-  /** 状态码 */
-  code: number
-  /** 接口消息 */
-  msg: string
-  /** 接口数据 */
-  data: T
+/** 文章元数据 */
+interface BlogMeta {
+  /** 标题 */
+  title: string
+  /** 时间 */
+  date: string
+  /** 字数 */
+  wordCount: numberr
+  /** 标签 */
+  tags: string[]
 }

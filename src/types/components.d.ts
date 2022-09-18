@@ -20,5 +20,6 @@ declare module '@vue/runtime-core' {
     NResult: typeof import('naive-ui')['NResult']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Test: typeof import('./../pages/test.md')['default']
   }
 }
