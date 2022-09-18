@@ -5,8 +5,7 @@ import Markdown from 'vite-plugin-md'
 import Shiki from 'markdown-it-shiki'
 
 export default Markdown({
-  wrapperComponent: 'post',
-  wrapperClasses: 'prose m-auto',
+  wrapperClasses: 'prose',
   markdownItSetup(md) {
     md.use(Shiki, {
       theme: {

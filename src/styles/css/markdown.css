@@ -10,6 +10,10 @@ html:not(.dark) .shiki-dark {
   display: none;
 }
 
+.prose {
+  width: 100%;
+}
+
 .prose a {
   font-weight: inherit;
   text-decoration: none;
@@ -27,6 +31,5 @@ html:not(.dark) .shiki-dark {
 }
 
 .prose .shiki {
-  font-size: 1em;
   line-height: 1.4;
 }
