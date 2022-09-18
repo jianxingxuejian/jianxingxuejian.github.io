@@ -27,8 +27,7 @@
         return {
           name: 'JavaScript',
           color: {
-            color: '#d7d894',
-            textColor: '#555'
+            color: '#d3b72f'
           }
         }
       default:
