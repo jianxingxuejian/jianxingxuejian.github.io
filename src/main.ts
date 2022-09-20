@@ -12,6 +12,4 @@ async function setupApp() {
   app.mount('#app')
 }
 
-setTimeout(() => {
-  setupApp()
-}, 500)
+setupApp()

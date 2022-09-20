@@ -12,19 +12,19 @@ MDN 关于函数的定义与使用 [js 指南-函数](https://developer.mozilla.
 ```javascript
 // 函数声明
 function square(value) {
-	return value * value
+  return value * value
 }
 // 函数表达式的具名函数形式
 const square = function square(value) {
-	return value * value
+  return value * value
 }
 // 函数表达式的匿名函数形式
 const square = function (value) {
-	return value * value
+  return value * value
 }
 // 函数表达式的箭头函数形式
 const square = value => {
-	return value * value
+  return value * value
 }
 // 只有一条语句时可省略花括号和return
 const square = value => value * value
@@ -39,7 +39,7 @@ const square = value => value * value
 ```javascript
 test() // 可以直接调用函数
 function test() {
-	console.log('test')
+  console.log('test')
 }
 
 const test = () => console.log('test')
@@ -51,15 +51,15 @@ test() // 只能先声明再调用
 ```javascript
 let test
 if (flag) {
-	test = x => {
-		const value = 10
-		return x * value
-	}
+  test = x => {
+    const value = 10
+    return x * value
+  }
 } else {
-	test = x => {
-		const value = 20
-		return x * value
-	}
+  test = x => {
+    const value = 20
+    return x * value
+  }
 }
 test(10)
 ```
@@ -102,7 +102,7 @@ const short = function longUniqueMoreDescriptiveLexicalFoo() {
 
 ```javascript
 function test() {
-	console.log(1)
+  console.log(1)
 }
 test.x = 'x'
 test.y = value => console.log(value)
@@ -112,14 +112,16 @@ console.log(test.x) // 输出x
 test.y(2) // 输出2
 ```
 
-这也是js中常见的“魔法”操作 。
+这也是 js 中常见的“魔法”操作 。
 
 **注意事项：**
 
 函数需要定义在一对花括号中，但是花括号在 js 中有两个语义，block 和对象，有歧义的地方会优先解释为 block，因此会有这样的问题：
 
 ```javascript
-const test = value => { value }
+const test = value => {
+  value
+}
 console.log(test(1))
 ```
 
@@ -127,7 +129,7 @@ console.log(test(1))
 
 ```javascript
 const test1 = value => {
-	return { value }
+  return { value }
 }
 const test2 = value => ({ value })
 console.log(test1(1), test2(2)) // 成功打印出 { value: 1 } 和 { value: 2 }

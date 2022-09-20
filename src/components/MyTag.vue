@@ -24,7 +24,9 @@
     tags: string[]
   }>()
 
-  const list = classifies.value.filter(item => props.tags.includes(item.tag))
+  const list = computed(() =>
+    classifies.value.filter(item => props.tags.includes(item.tag))
+  )
 
   const router = useRouter()
   function toList(tag: string) {

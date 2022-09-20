@@ -1,11 +1,13 @@
 <template>
   <div
-    class="px-5vw grid gap-x-6 w-screen lg:grid-cols-[22fr_66fr] 2xl:grid-cols-[18fr_48fr_18fr]"
+    class="px-5vw grid gap-x-6 w-screen lg:grid-cols-[22fr_66fr] 2xl:grid-cols-[18fr_48fr_18fr] min-w-360px"
   >
     <div class="h-0 order-0 grid-col-start-1 grid-col-end-1"></div>
-    <layout-main
-      class="order-1 lg:(order-2 grid-row-span-2) 2xl:grid-row-a mt-20px p-5 min-w-0"
-    />
+    <div
+      class="order-1 lg:(order-2 grid-row-span-2) 2xl:grid-row-a mt-20px min-w-0"
+    >
+      <layout-main />
+    </div>
 
     <transition name="aside-left" appear>
       <aside class="order-2 lg:order-1 grid-col-start-1 grid-col-end-1">
@@ -17,7 +19,7 @@
     </transition>
 
     <transition name="aside-right" appear>
-      <aside class="order-3">
+      <aside class="order-3 mb-20px">
         <div class="sticky top-20px">
           <layout-about class="h-400px mt-20px" />
           <layout-about class="h-400px mt-20px" />

@@ -1,10 +1,12 @@
 <template>
-  <n-card
-    :bordered="false"
-    class="bg-white/50 lg:(min-h-[calc(100vh-40px)] mb-20px)"
-  >
+  <n-card :bordered="false" class="bg-white/50 lg:min-h-[calc(100vh-40px)]">
     <div v-for="item in list" :key="item.title" class="flex-col">
-      <n-card :title="item.title" class="mb-20px bg-white/80">
+      <n-card class="mb-20px bg-white/80">
+        <template #header>
+          <span class="cursor-pointer" @click="router.push(item.path)">
+            {{ item.title }}
+          </span>
+        </template>
         <template #header-extra>
           <n-button
             text
@@ -40,6 +42,7 @@
   } else {
     list = blogs
   }
+  console.log(blogs)
 
   const router = useRouter()
 </script>

@@ -8,8 +8,11 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Article: typeof import('./../components/Article.vue')['default']
-    HowToDefineFunction: typeof import('./../pages/how-to-define-function.md')['default']
+    Essay: typeof import('./../components/Essay.vue')['default']
+    HowToDefineAFunction: typeof import('./../pages/How-to-define-a-function.md')['default']
+    HowToDefineFunction: typeof import('./../pages/How-to-define-function.md')['default']
     IconMdiBookOpenOutline: typeof import('~icons/mdi/book-open-outline')['default']
+    IntroductionToComposables: typeof import('./../pages/Introduction-to-Composables.md')['default']
     MyTag: typeof import('./../components/MyTag.vue')['default']
     NA: typeof import('naive-ui')['NA']
     NaiveProvider: typeof import('./../components/NaiveProvider.vue')['default']
@@ -17,6 +20,7 @@ declare module '@vue/runtime-core' {
     NCard: typeof import('naive-ui')['NCard']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDialogProvider: typeof import('naive-ui')['NDialogProvider']
+    NLayoutFooter: typeof import('naive-ui')['NLayoutFooter']
     NLoadingBarProvider: typeof import('naive-ui')['NLoadingBarProvider']
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
@@ -24,6 +28,7 @@ declare module '@vue/runtime-core' {
     NTag: typeof import('naive-ui')['NTag']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Sss: typeof import('./../components/sss.vue')['default']
     Test: typeof import('./../pages/test.md')['default']
   }
 }

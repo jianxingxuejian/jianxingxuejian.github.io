@@ -1,6 +1,8 @@
 <template>
   <n-card title="分类" :bordered="false" class="bg-white/50">
-    <div class="grid xl:grid-cols-2 text-4 text-center">
+    <div
+      class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-x-4 text-4 text-center"
+    >
       <n-a
         v-for="item in classifies"
         :key="item.name"
