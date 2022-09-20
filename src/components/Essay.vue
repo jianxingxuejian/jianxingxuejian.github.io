@@ -13,9 +13,5 @@
   const props = defineProps<{
     frontmatter: Record<string, string>
   }>()
-  interface Test {
-    a: string
-    b: number
-  }
-  const sss: Test = { a: '2' }
+  console.log(props)
 </script>
