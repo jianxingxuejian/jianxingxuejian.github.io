@@ -1,8 +1,8 @@
 ---
 title: 如何定义一个函数
 date: 2022-09-17
-wordCount: 1300
-tags: [js]
+wordCount: 1600
+tags: [js,ts]
 ---
 
 # 如何定义一个函数
@@ -92,7 +92,7 @@ const short = function longUniqueMoreDescriptiveLexicalFoo() {
 
 我目前的使用方式：大部分函数使用函数声明，少部分函数使用函数表达式。
 
-相比函数表达式，函数声明的 function 关键字更加直观了然，很清晰的代表这是一个函数。对于一个模块而言，因为存在函数提升，我们能把多个函数按照重要性/使用频率/调用顺序等进行组织，而不需要把无关紧要的函数放在前面。~~还有 vue 单文件下带有泛型的箭头函数会被 volar 识别成 JSX。~~
+相比函数表达式，函数声明的 function 关键字更加直观了然，很清晰的代表这是一个函数。对于一个模块而言，因为存在函数提升，我们能把多个函数按照重要性/使用频率/调用顺序等进行组织，而不需要把无关紧要的函数放在前面。
 
 从避免浪费的角度来说，某些函数以函数表达式声明也是个好实践，因为函数声明会在代码执行前创建，即使没有调用也占用内存空间，而函数表达式是在运行过程时才进行创建，调用后立即释放。当然实际编程中，二者的区别可以忽略不计。
 
@@ -134,3 +134,50 @@ const test1 = value => {
 const test2 = value => ({ value })
 console.log(test1(1), test2(2)) // 成功打印出 { value: 1 } 和 { value: 2 }
 ```
+
+在Typescript下，函数声明有个短板，无法进行函数类型声明，只能分别标注参数与返回值，用函数表达式则可以标注整个函数的类型：
+
+```typescript
+// 声明一个函数，入参为泛型，限定返回值为改泛型的数组
+function test<T>(param: T): T[] {
+  return [param]
+}
+
+// 对函数进行类型定义，再标注在函数的返回值上
+interface Test<T = any> {
+  (param: T): T[]
+}
+// OR
+type Test<T = any> = (param: T) => T[]
+// 这样就不用标注两次泛型T
+const test: Test = param => [param]
+```
+
+上面这个例子可能不直观，感受不到函数类型声明的好处，再来一个稍微复杂点的场景：
+
+```typescript
+function getColumns(funs: ((row?: RowDate) => void)[]): DataTableColumn<RowDate>[] {
+  //
+}
+```
+
+上面的RowDate在不同场景需要替换成不同的类型，且函数的具体语句也不同，假设我们有多个地方需要使用这个函数，那就需要写很多次长长的参数与返回值声明，通过函数类型声明我们可以用泛型进行优化：
+
+```typescript
+type GetColumns<T> = (funs: ((row?: T) => void)[]) => DataTableColumn<T>[]
+
+const getColumns: GetColumns<RowDate> = funs => {
+  //
+}
+```
+
+将这个函数类型抽离后，仅需要该类型和一个泛型参数，就能推断出funs的类型并对返回值进行约束，且能多处复用，明显简洁不少。
+
+函数声明虽然也能达成这种操作，但是非常复杂且难看，还不如最初的声明方式：
+
+```typescript
+function getColumns(...[funs]: Parameters<GetColumns<RowDate>>): ReturnType<GetColumns<RowDate>> {
+  //
+}
+```
+

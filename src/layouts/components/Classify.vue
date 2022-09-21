@@ -23,9 +23,9 @@
   classifies.value = [
     { name: '全部', tag: 'all', num: blogs.length, tagColor: '#fff' },
     { name: 'JavaScript', tag: 'js', tagColor: '#d3b72f' },
-    { name: 'TypeScript', tag: 'ts', tagColor: '#fff' },
+    { name: 'TypeScript', tag: 'ts', tagColor: '#2575c3' },
     { name: 'CSS', tag: 'css', tagColor: '#fff' },
-    { name: 'Vue', tag: 'vue', tagColor: '#fff' },
+    { name: 'Vue', tag: 'vue', tagColor: '#2bb885' },
     { name: 'Vite', tag: 'vite', tagColor: '#fff' }
   ]
   const count = countBy(blogs.map(item => item.tags).flat())
