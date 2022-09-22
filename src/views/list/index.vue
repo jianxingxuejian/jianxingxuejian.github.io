@@ -3,7 +3,7 @@
     <div v-for="item in list" :key="item.title" class="flex-col">
       <n-card class="mb-20px bg-white/80">
         <template #header>
-          <span class="cursor-pointer" @click="router.push(item.path)">
+          <span class="cursor-pointer" @click="jump(item.path)">
             {{ item.title }}
           </span>
         </template>
@@ -12,7 +12,7 @@
             text
             size="large"
             class="ml-5 text-[#18a058]"
-            @click="router.push(item.path)"
+            @click="jump(item.path)"
           >
             <template #icon>
               <icon-mdi-book-open-outline />
@@ -32,17 +32,24 @@
 
 <script setup lang="ts">
   import { blogs } from '@/router/pages'
+  import { recent } from '@/stores'
 
   const props = defineProps<{
     tag: string
   }>()
-  let list: BlogInfo[] = []
-  if (props.tag !== 'all') {
-    list = blogs.filter(item => item.tags.includes(props.tag))
-  } else {
-    list = blogs
-  }
-  console.log(blogs)
+
+  const list = computed(() => {
+    if (props.tag !== 'all') {
+      return blogs.filter(item => item.tags.includes(props.tag))
+    } else {
+      return blogs
+    }
+  })
 
   const router = useRouter()
+
+  function jump(path: string) {
+    recent.value = props.tag
+    router.push(path)
+  }
 </script>
