@@ -13,14 +13,14 @@ const router = createRouter({
     ...constantRoutes,
     ...modules,
     ...setupLayouts(pages)
-  ] as RouteRecordRaw[],
-  scrollBehavior(to, _from, savedPosition) {
-    if (to.name === 'list_index') {
-      // document.body.scrollTo({ top: 0 })
-    } else if (savedPosition) {
-      return savedPosition
-    }
-  }
+  ] as RouteRecordRaw[]
+  // scrollBehavior(to, _from, savedPosition) {
+  //   if (to.name === 'list_index') {
+  //     // document.body.scrollTo({ top: 0 })
+  //   } else if (savedPosition) {
+  //     return savedPosition
+  //   }
+  // }
 })
 
 /** 安装路由 */
