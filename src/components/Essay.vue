@@ -59,4 +59,14 @@
     prev.value = index - 1 < 0 ? undefined : blogs[index - 1].path
     next.value = index + 1 >= blogs.length ? undefined : blogs[index + 1].path
   })
+
+  let top = 0
+
+  onActivated(() => {
+    document.body.scrollTop = top
+  })
+
+  onDeactivated(() => {
+    top = document.body.scrollTop
+  })
 </script>

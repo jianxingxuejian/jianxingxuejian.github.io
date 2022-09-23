@@ -1,7 +1,7 @@
 ---
 title: 如何定义一个函数
 date: 2022-09-17
-wordCount: 1600
+wordCount: 1500
 tags: [js,ts]
 ---
 
@@ -135,25 +135,9 @@ const test2 = value => ({ value })
 console.log(test1(1), test2(2)) // 成功打印出 { value: 1 } 和 { value: 2 }
 ```
 
-在Typescript下，函数声明有个短板，无法进行函数类型声明，只能分别标注参数与返回值，用函数表达式则可以标注整个函数的类型：
 
-```typescript
-// 声明一个函数，入参为泛型，限定返回值为改泛型的数组
-function test<T>(param: T): T[] {
-  return [param]
-}
 
-// 对函数进行类型定义，再标注在函数的返回值上
-interface Test<T = any> {
-  (param: T): T[]
-}
-// OR
-type Test<T = any> = (param: T) => T[]
-// 这样就不用标注两次泛型T
-const test: Test = param => [param]
-```
-
-上面这个例子可能不直观，感受不到函数类型声明的好处，再来一个稍微复杂点的场景：
+在**Typescript**下，函数声明有个短板，无法进行函数类型声明，只能分别标注参数与返回值，用函数表达式则可以标注整个函数的类型：
 
 ```typescript
 function getColumns(funs: ((row?: RowDate) => void)[]): DataTableColumn<RowDate>[] {
@@ -161,7 +145,7 @@ function getColumns(funs: ((row?: RowDate) => void)[]): DataTableColumn<RowDate>
 }
 ```
 
-上面的RowDate在不同场景需要替换成不同的类型，且函数的具体语句也不同，假设我们有多个地方需要使用这个函数，那就需要写很多次长长的参数与返回值声明，通过函数类型声明我们可以用泛型进行优化：
+上面的RowDate在不同场景需要替换成不同的类型，且函数的具体语句也有差异，假设我们有多个地方需要使用这个函数，那就需要写很多次长长的参数与返回值声明，通过函数类型声明我们可以进行优化：
 
 ```typescript
 type GetColumns<T> = (funs: ((row?: T) => void)[]) => DataTableColumn<T>[]
