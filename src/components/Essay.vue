@@ -1,7 +1,7 @@
 <template>
   <div>
     <slot></slot>
-    <div class="h-12 bg-white/0 mb-20px flex-evenly">
+    <div class="h-12 bg-white/0 flex-evenly">
       <my-button
         text="上一篇"
         quaternary
