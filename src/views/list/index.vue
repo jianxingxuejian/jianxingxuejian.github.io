@@ -29,7 +29,7 @@
         </n-card>
       </div>
     </div>
-    <div class="flex-center">
+    <div class="flex-center mt-12px">
       <n-pagination v-model:page="page" :page-count="100" />
     </div>
   </n-card>
