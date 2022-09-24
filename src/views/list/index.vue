@@ -1,6 +1,6 @@
 <template>
   <n-card :bordered="false" class="bg-white/50 flex-col h-full">
-    <div class="h-[100vh-40px]">
+    <div class="h-[calc(100%-40px)]">
       <div v-for="item in list" :key="item.title" class="flex-col">
         <n-card class="mb-20px bg-white/80">
           <template #header>
