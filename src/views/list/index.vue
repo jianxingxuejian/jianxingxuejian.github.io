@@ -52,4 +52,6 @@
     recent.value = props.tag
     router.push(path)
   }
+
+  onActivated(() => (document.body.scrollTop = 0))
 </script>

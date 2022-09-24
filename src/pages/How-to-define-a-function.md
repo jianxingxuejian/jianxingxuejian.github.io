@@ -2,7 +2,7 @@
 title: 如何定义一个函数
 date: 2022-09-17
 wordCount: 1500
-tags: [js,ts]
+tags: [js, ts]
 ---
 
 # 如何定义一个函数
@@ -46,7 +46,7 @@ const test = () => console.log('test')
 test() // 只能先声明再调用
 ```
 
-某些场景下函数表达式更加灵活，JSX/TSX 可能会更加喜欢这种方式。
+某些场景下函数表达式更加灵活。
 
 ```javascript
 let test
@@ -90,12 +90,6 @@ const short = function longUniqueMoreDescriptiveLexicalFoo() {
 }
 ```
 
-我目前的使用方式：大部分函数使用函数声明，少部分函数使用函数表达式。
-
-相比函数表达式，函数声明的 function 关键字更加直观了然，很清晰的代表这是一个函数。对于一个模块而言，因为存在函数提升，我们能把多个函数按照重要性/使用频率/调用顺序等进行组织，而不需要把无关紧要的函数放在前面。
-
-从避免浪费的角度来说，某些函数以函数表达式声明也是个好实践，因为函数声明会在代码执行前创建，即使没有调用也占用内存空间，而函数表达式是在运行过程时才进行创建，调用后立即释放。当然实际编程中，二者的区别可以忽略不计。
-
 有兴趣的话可以看下 StackOverflow 上关于它们的讨论 [地址](https://stackoverflow.com/questions/336859/var-functionname-function-vs-function-functionname)
 
 为什么声明函数会有 2 种截然不同的方式呢，这是因为 js 中的函数是头等函数(**First-class Function**)，或者说是一等公民，函数可以被当作参数传递给其他函数，可以作为另一个函数的返回值，还可以被赋值给一个变量。虽然 js 中的函数看起来是函数，但本质上是对象，它除了具有函数式的特点外，同时还具有面向对象的特点，因此在 js 中你还能给一个函数设置属性，甚至给函数设置一个函数：
@@ -135,17 +129,17 @@ const test2 = value => ({ value })
 console.log(test1(1), test2(2)) // 成功打印出 { value: 1 } 和 { value: 2 }
 ```
 
-
-
 在**Typescript**下，函数声明有个短板，无法进行函数类型声明，只能分别标注参数与返回值，用函数表达式则可以标注整个函数的类型：
 
 ```typescript
-function getColumns(funs: ((row?: RowDate) => void)[]): DataTableColumn<RowDate>[] {
+function getColumns(
+  funs: ((row?: RowDate) => void)[]
+): DataTableColumn<RowDate>[] {
   //
 }
 ```
 
-上面的RowDate在不同场景需要替换成不同的类型，且函数的具体语句也有差异，假设我们有多个地方需要使用这个函数，那就需要写很多次长长的参数与返回值声明，通过函数类型声明我们可以进行优化：
+上面的 RowDate 在不同场景需要替换成不同的类型，且函数的具体语句也有差异，假设我们有多个地方需要使用这个函数，那就需要写很多次长长的参数与返回值声明，通过函数类型声明我们可以进行优化：
 
 ```typescript
 type GetColumns<T> = (funs: ((row?: T) => void)[]) => DataTableColumn<T>[]
@@ -155,13 +149,22 @@ const getColumns: GetColumns<RowDate> = funs => {
 }
 ```
 
-将这个函数类型抽离后，仅需要该类型和一个泛型参数，就能推断出funs的类型并对返回值进行约束，且能多处复用，明显简洁不少。
+将这个函数类型抽离后，仅需要该类型和一个泛型参数，就能推断出 funs 的类型并对返回值进行约束，且能多处复用，明显简洁不少。
 
 函数声明虽然也能达成这种操作，但是非常复杂且难看，还不如最初的声明方式：
 
 ```typescript
-function getColumns(...[funs]: Parameters<GetColumns<RowDate>>): ReturnType<GetColumns<RowDate>> {
+function getColumns(
+  ...[funs]: Parameters<GetColumns<RowDate>>
+): ReturnType<GetColumns<RowDate>> {
   //
 }
 ```
 
+那么到底该选择哪种方式呢？我想了下这个问题其实没有答案，各有优劣，需要结合团队的习惯、具体场景去讨论，而不应该一边倒地进行限制。
+
+我目前的使用方式：大部分场景使用函数声明，少部分场景使用函数表达式。
+
+相比函数表达式，函数声明的 function 关键字更加直观了然，很清晰的代表这是一个函数。对于一个模块而言，因为存在函数提升，我们能把多个函数按照重要性/使用频率/调用顺序等进行组织，而不需要把无关紧要的函数放在前面。
+
+从避免浪费的角度来说，某些函数以函数表达式声明也是个好实践，因为函数声明会在代码执行前创建，即使没有调用也占用内存空间，而函数表达式是在运行过程时才进行创建，调用后立即释放。当然实际编程中，二者的区别可以忽略不计。
