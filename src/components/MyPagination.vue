@@ -41,8 +41,6 @@
 </template>
 
 <script setup lang="ts">
-  import { Console } from 'console'
-
   const props = defineProps<{
     /** 页码 */
     modelValue: number
@@ -100,14 +98,9 @@
       ellipsisLeftShow.value = false
     }
 
-    if (count > 9 && page + 4 < count) {
+    if (count > 9 && count > page + 4) {
       ellipsisRightShow.value = true
-      let start: number
-      if (page <= 5) {
-        start = 8
-      } else {
-        start = page + 3
-      }
+      let start = page <= 5 ? 8 : page + 3
       ellipsisRight.value = Array.from(
         { length: count - start },
         (_, i) => i + start
