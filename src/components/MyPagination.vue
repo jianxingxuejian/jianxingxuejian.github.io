@@ -13,17 +13,17 @@
     </div>
     <div class="flex-center">
       <div
-        v-for="num in pageCount"
-        :key="num"
+        v-for="(item, index) in pageList"
+        :key="index"
         class="w-7 h-7 ml-3 text-4 flex-center rounded shadow cursor-pointer"
         :class="[
-          num === modelValue
-            ? 'bg-zinc-800/50 color-white'
-            : 'bg-white/50 hover:color-cyan-600'
+          item == modelValue.toString()
+            ? 'bg-zinc-800/50 color-white rounded shadow'
+            : 'bg-white/50 hover:color-cyan-600 rounded shadow'
         ]"
-        @click="$emit('update:modelValue', num)"
+        @click="handleJumpTo(item)"
       >
-        {{ num }}
+        {{ item }}
       </div>
     </div>
     <div
@@ -41,6 +41,8 @@
 </template>
 
 <script setup lang="ts">
+  import { Console } from 'console'
+
   const props = defineProps<{
     /** 页码 */
     modelValue: number
@@ -55,6 +57,19 @@
   }>()
 
   const pageCount = computed(() => Math.ceil(props.itemCount / props.pageSize))
+  const ellipsisLeftShow = ref(false)
+  const ellipsisLeft = ref<number[]>([])
+  const ellipsisRightShow = ref(false)
+  const ellipsisRight = ref<number[]>([])
+  const center = ref<string[]>([])
+
+  const pageList = computed(() =>
+    ['1']
+      .concat(ellipsisLeftShow.value ? '...' : [])
+      .concat(center.value)
+      .concat(ellipsisRightShow.value ? '...' : [])
+      .concat(pageCount.value.toString())
+  )
 
   function handlePrev() {
     if (props.modelValue > 1) {
@@ -67,4 +82,49 @@
       emits('update:modelValue', props.modelValue + 1)
     }
   }
+
+  function handleJumpTo(item: string) {
+    const num = Number(item)
+    if (isNaN(num)) return
+    emits('update:modelValue', num)
+  }
+
+  watchEffect(() => {
+    const page = props.modelValue
+    const count = pageCount.value
+
+    if (count > 9 && page > 5) {
+      ellipsisLeftShow.value = true
+      ellipsisLeft.value = Array.from({ length: page - 4 }, (_, i) => i + 2)
+    } else {
+      ellipsisLeftShow.value = false
+    }
+
+    if (count > 9 && page + 4 < count) {
+      ellipsisRightShow.value = true
+      let start: number
+      if (page <= 5) {
+        start = 8
+      } else {
+        start = page + 3
+      }
+      ellipsisRight.value = Array.from(
+        { length: count - start },
+        (_, i) => i + start
+      )
+    } else {
+      ellipsisRightShow.value = false
+    }
+
+    const left = ellipsisLeftShow.value
+    const right = ellipsisRightShow.value
+
+    if (count > 2) {
+      const lehgth = (count > 9 ? 7 : count - 2) - Number(left) - Number(right)
+      const start = left ? (count - page <= 3 ? count - 6 : page - 2) : 2
+      center.value = Array.from({ length: lehgth }, (_, i) =>
+        (i + start).toString()
+      )
+    }
+  })
 </script>
