@@ -19,6 +19,7 @@ declare module '@vue/runtime-core' {
     IconMdiBookOpenOutline: typeof import('~icons/mdi/book-open-outline')['default']
     IntroductionToComposables: typeof import('./../pages/Introduction-to-Composables.md')['default']
     MyButton: typeof import('./../components/MyButton.vue')['default']
+    MyPagination: typeof import('./../components/MyPagination.vue')['default']
     MyTag: typeof import('./../components/MyTag.vue')['default']
     NA: typeof import('naive-ui')['NA']
     NaiveProvider: typeof import('./../components/NaiveProvider.vue')['default']

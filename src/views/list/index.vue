@@ -1,8 +1,8 @@
 <template>
-  <n-card :bordered="false" class="bg-white/50 flex-col h-full">
+  <div class="flex-col h-full">
     <div id="list" class="h-[calc(100%-40px)]">
       <div v-for="item in list" :key="item.title" class="flex-col">
-        <n-card class="mb-20px bg-white/80">
+        <n-card class="mb-20px bg-white/70" :bordered="false">
           <template #header>
             <span class="cursor-pointer" @click="jump(item.path)">
               {{ item.title }}
@@ -30,13 +30,13 @@
       </div>
     </div>
     <div class="flex-center mt-12px">
-      <n-pagination
-        v-model:page="pagination.page"
+      <my-pagination
+        v-model="pagination.page"
         :page-size="pagination.pageSize"
         :item-count="pagination.itemCount"
       />
     </div>
-  </n-card>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -92,6 +92,6 @@
 
   onActivated(() => {
     autoResize()
-    document.body.scrollTop = 0
+    // document.body.scrollTop = 0
   })
 </script>
