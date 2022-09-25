@@ -1,6 +1,6 @@
 <template>
   <n-card :bordered="false" class="bg-white/50 flex-col h-full">
-    <div class="h-[calc(100%-40px)]">
+    <div id="list" class="h-[calc(100%-40px)]">
       <div v-for="item in list" :key="item.title" class="flex-col">
         <n-card class="mb-20px bg-white/80">
           <template #header>
@@ -30,12 +30,18 @@
       </div>
     </div>
     <div class="flex-center mt-12px">
-      <n-pagination v-model:page="page" :page-count="100" />
+      <n-pagination
+        v-model:page="pagination.page"
+        :page-size="pagination.pageSize"
+        :item-count="pagination.itemCount"
+      />
     </div>
   </n-card>
 </template>
 
 <script setup lang="ts">
+  import { chunk } from 'lodash-es'
+  import { useEventListener } from '@vueuse/core'
   import { blogs } from '@/router/pages'
   import { recent } from '@/stores'
 
@@ -43,13 +49,20 @@
     tag: string
   }>()
 
-  const page = ref(1)
+  const pagination = reactive({
+    page: 1,
+    pageSize: 1,
+    itemCount: blogs.length
+  })
 
   const list = computed(() => {
     if (props.tag !== 'all') {
-      return blogs.filter(item => item.tags.includes(props.tag))
+      return chunk(
+        blogs.filter(item => item.tags.includes(props.tag)),
+        pagination.pageSize
+      )[pagination.page - 1]
     } else {
-      return blogs
+      return chunk(blogs, pagination.pageSize)[pagination.page - 1]
     }
   })
 
@@ -60,5 +73,25 @@
     router.push(path)
   }
 
-  onActivated(() => (document.body.scrollTop = 0))
+  function autoResize() {
+    const width = document.body.clientWidth
+    if (width < 640) {
+      pagination.pageSize = 4
+    } else if (width < 1024) {
+      pagination.pageSize = 6
+    } else if (width < 1536) {
+      pagination.pageSize = 10
+    } else {
+      pagination.pageSize = 6
+    }
+  }
+
+  useEventListener(window, 'resize', () => {
+    autoResize()
+  })
+
+  onActivated(() => {
+    autoResize()
+    document.body.scrollTop = 0
+  })
 </script>
