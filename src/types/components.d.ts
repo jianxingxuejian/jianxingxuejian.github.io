@@ -9,6 +9,8 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Article: typeof import('./../components/Article.vue')['default']
     Essay: typeof import('./../components/Essay.vue')['default']
+    'FullResolutionAdaptationAnd-': typeof import('./../pages/Full-resolution-adaptation-and-.md')['default']
+    FullResolutionAdaptationAndResponsiveDesign: typeof import('./../pages/Full-resolution-adaptation-and-responsive-design.md')['default']
     HowToDefineAFunction: typeof import('./../pages/How-to-define-a-function.md')['default']
     HowToDefineFunction: typeof import('./../pages/How-to-define-function.md')['default']
     'IconIc:twotoneArrowBack': typeof import('~icons/ic/twotone-arrow-back')['default']
@@ -18,6 +20,8 @@ declare module '@vue/runtime-core' {
     IconIcTwotoneArrowForward: typeof import('~icons/ic/twotone-arrow-forward')['default']
     IconMdiBookOpenOutline: typeof import('~icons/mdi/book-open-outline')['default']
     IntroductionToComposables: typeof import('./../pages/Introduction-to-Composables.md')['default']
+    JavaScriptMemo: typeof import('./../pages/JavaScript-memo.md')['default']
+    Markdown: typeof import('./../pages/新建 Markdown.md')['default']
     MyButton: typeof import('./../components/MyButton.vue')['default']
     MyPagination: typeof import('./../components/MyPagination.vue')['default']
     MyTag: typeof import('./../components/MyTag.vue')['default']
@@ -41,5 +45,6 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     Sss: typeof import('./../components/sss.vue')['default']
     Test: typeof import('./../pages/test.md')['default']
+    TypeScriptMemo: typeof import('./../pages/TypeScript-memo.md')['default']
   }
 }

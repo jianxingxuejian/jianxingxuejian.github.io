@@ -20,11 +20,17 @@
   import { countBy } from 'lodash-es'
   import { classifies } from '@/stores'
 
+  const a = 'a'
+  const test = Number(a)
+  console.log(test)
+  const str = 'hello'
+  console.log(str.slice(test, 0))
+
   classifies.value = [
     { name: '全部', tag: 'all', num: blogs.length, tagColor: '#fff' },
     { name: 'JavaScript', tag: 'js', tagColor: '#d3b72f' },
     { name: 'TypeScript', tag: 'ts', tagColor: '#2575c3' },
-    { name: 'CSS', tag: 'css', tagColor: '#fff' },
+    { name: 'CSS', tag: 'css', tagColor: '#ec972c' },
     { name: 'Vue', tag: 'vue', tagColor: '#2bb885' },
     { name: 'Vite', tag: 'vite', tagColor: '#fff' }
   ]
