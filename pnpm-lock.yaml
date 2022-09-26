@@ -20,6 +20,7 @@ specifiers:
   eslint-plugin-vue: ^9.4.0
   fs-extra: ^10.1.0
   gray-matter: ^4.0.3
+  gsap: ^3.11.1
   lodash-es: ^4.17.21
   markdown-it-shiki: ^0.5.1
   naive-ui: ^2.33.3
@@ -43,6 +44,7 @@ specifiers:
 dependencies:
   '@vueuse/core': 9.2.0_vue@3.2.39
   dayjs: 1.11.5
+  gsap: 3.11.1
   lodash-es: 4.17.21
   vue: 3.2.39
   vue-router: 4.1.5_vue@3.2.39
@@ -56,7 +58,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.37.0_irgkl5vooow2ydyo6aokmferha
   '@vitejs/plugin-basic-ssl': 0.1.2_vite@3.1.0
   '@vitejs/plugin-vue': 3.1.0_vite@3.1.0+vue@3.2.39
-  '@yankeeinlondon/code-builder': 1.0.7_f6pau5yxojegerz5z6dpi22oje
+  '@yankeeinlondon/code-builder': 1.0.7_2nwifsmcu3es2aih5xe37ibq4e
   '@yankeeinlondon/link-builder': 1.0.5_4lzhw32txaehcctoobafod4k6e
   '@yankeeinlondon/meta-builder': 1.0.6_cnjvmjbzukbcpejc6qc5gmg5p4
   eslint: 8.23.1
@@ -919,11 +921,9 @@ packages:
       - terser
     dev: true
 
-  /@yankeeinlondon/code-builder/1.0.7_f6pau5yxojegerz5z6dpi22oje:
+  /@yankeeinlondon/code-builder/1.0.7_2nwifsmcu3es2aih5xe37ibq4e:
     resolution: {integrity: sha512-VbKKLU0eRSzuGfLphCj31DkylhQMNOL6o4VX5QrbFOPHhNym3wALO6l0GADxUpTLkrEyWt3YhtEd/Tuh0QfZ5A==}
     peerDependencies:
-      '@unocss/vite': ^0.44.5
-      '@yankeeinlondon/builder-api': ^0.4.0
       markdown-it: '>=13'
     dependencies:
       '@unocss/vite': 0.44.7_vite@3.1.0
@@ -938,6 +938,7 @@ packages:
       - '@vitest/browser'
       - '@vitest/ui'
       - c8
+      - fp-ts
       - happy-dom
       - jsdom
       - less
@@ -945,6 +946,8 @@ packages:
       - stylus
       - supports-color
       - terser
+      - vite
+      - vite-plugin-md
     dev: true
 
   /@yankeeinlondon/happy-wrapper/2.6.0_fbyzjfqbv5cnwzyx3orxwlotca:
@@ -2240,6 +2243,10 @@ packages:
       section-matter: 1.0.0
       strip-bom-string: 1.0.0
     dev: true
+
+  /gsap/3.11.1:
+    resolution: {integrity: sha512-UKuJ0UPhntFHMwT6URFQ4cTQv88xc7Kd9Dhxt7qX9IPhC+d+/a5wKW5E5Vn33hZ53nBI1JfApcEbzKgXkcuPZw==}
+    dev: false
 
   /gzip-size/6.0.0:
     resolution: {integrity: sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q==}

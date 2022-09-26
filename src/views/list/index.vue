@@ -1,33 +1,35 @@
 <template>
   <div class="flex-col h-full">
     <div id="list" class="h-[calc(100%-40px)]">
-      <div v-for="item in list" :key="item.title" class="flex-col">
-        <n-card class="mb-20px bg-white/70" :bordered="false">
-          <template #header>
-            <span class="cursor-pointer" @click="jump(item.path)">
-              {{ item.title }}
-            </span>
-          </template>
-          <template #header-extra>
-            <n-button
-              text
-              size="large"
-              class="ml-5 text-[#18a058]"
-              @click="jump(item.path)"
-            >
-              <template #icon>
-                <icon-mdi-book-open-outline />
-              </template>
-              阅读
-            </n-button>
-          </template>
-          <div class="flex-col ml-8 sm:(flex-evenly flex-row ml-8)">
-            <my-tag :tags="item.tags" />
-            <div>时间：{{ item.date }}</div>
-            <div>字数：{{ item.wordCount }}</div>
-          </div>
-        </n-card>
-      </div>
+      <TransitionGroup @enter="onItemEnter">
+        <div v-for="item in list" :key="item.title" class="flex-col">
+          <n-card class="mb-20px bg-white/70" :bordered="false">
+            <template #header>
+              <span class="cursor-pointer" @click="jump(item.path)">
+                {{ item.title }}
+              </span>
+            </template>
+            <template #header-extra>
+              <n-button
+                text
+                size="large"
+                class="ml-5 text-[#18a058]"
+                @click="jump(item.path)"
+              >
+                <template #icon>
+                  <icon-mdi-book-open-outline />
+                </template>
+                阅读
+              </n-button>
+            </template>
+            <div class="flex-col ml-8 sm:(flex-evenly flex-row ml-8)">
+              <my-tag :tags="item.tags" />
+              <div>时间：{{ item.date }}</div>
+              <div>字数：{{ item.wordCount }}</div>
+            </div>
+          </n-card>
+        </div>
+      </TransitionGroup>
     </div>
     <div class="flex-center mt-12px">
       <my-pagination
@@ -42,6 +44,7 @@
 <script setup lang="ts">
   import { chunk } from 'lodash-es'
   import { useEventListener } from '@vueuse/core'
+  import gsap from 'gsap'
   import { blogs } from '@/router/pages'
   import { recent } from '@/stores'
 
@@ -71,6 +74,15 @@
   function jump(path: string) {
     recent.value = props.tag
     router.push(path)
+  }
+
+  function onItemEnter(el: HTMLElement, done: () => void) {
+    gsap.to(el, {
+      opacity: 1,
+      height: '1.6em',
+      delay: 1 + Number(el.dataset.index) * 0.15,
+      onComplete: done
+    })
   }
 
   function autoResize() {
