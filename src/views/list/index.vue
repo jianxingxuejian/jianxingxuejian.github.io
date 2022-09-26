@@ -1,8 +1,13 @@
 <template>
   <div class="flex-col h-full">
     <div id="list" class="h-[calc(100%-40px)]">
-      <TransitionGroup @enter="onItemEnter">
-        <div v-for="item in list" :key="item.title" class="flex-col">
+      <TransitionGroup :css="false" @enter="onEnter">
+        <div
+          v-for="(item, index) in list"
+          :key="item.title"
+          :data-index="index"
+          class="flex-col"
+        >
           <n-card class="mb-20px bg-white/70" :bordered="false">
             <template #header>
               <span class="cursor-pointer" @click="jump(item.path)">
@@ -47,6 +52,7 @@
   import gsap from 'gsap'
   import { blogs } from '@/router/pages'
   import { recent } from '@/stores'
+  import { RendererElement } from 'vue'
 
   const props = defineProps<{
     tag: string
@@ -59,6 +65,7 @@
   })
 
   const list = computed(() => {
+    if (pagination.pageSize === 1) return []
     if (props.tag !== 'all') {
       return chunk(
         blogs.filter(item => item.tags.includes(props.tag)),
@@ -76,11 +83,12 @@
     router.push(path)
   }
 
-  function onItemEnter(el: HTMLElement, done: () => void) {
-    gsap.to(el, {
-      opacity: 1,
-      height: '1.6em',
-      delay: 1 + Number(el.dataset.index) * 0.15,
+  function onEnter(el: RendererElement, done: () => void) {
+    gsap.from(el, {
+      opacity: 0,
+      y: 100,
+      delay: el.dataset.index * 0.1,
+      duration: 0.5,
       onComplete: done
     })
   }

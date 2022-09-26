@@ -17,7 +17,7 @@
         :key="index"
         class="w-7 h-7 ml-3 text-4 flex-center rounded shadow cursor-pointer"
         :class="[
-          item == modelValue.toString()
+          item === modelValue
             ? 'bg-zinc-800/50 color-white rounded shadow'
             : 'bg-white/50 hover:color-cyan-600 rounded shadow'
         ]"
@@ -30,9 +30,11 @@
       <n-input-number
         :value="modelValue"
         :show-button="false"
+        :min="1"
         :max="pageCount"
         placeholder=""
         class="w-15 text-center ml-3"
+        @update:value="handleJumpTo"
       />
       <span class="text-6">&nbsp;/&nbsp;</span>
       <span class="text-6">{{ pageCount }}</span>
@@ -74,13 +76,15 @@
   const ellipsisRight = ref<number[]>([])
   const center = ref<number[]>([])
 
-  const pageList = computed(() =>
-    new Array<number | string>(1)
+  const pageList = computed(() => {
+    const list: (number | string)[] = [1]
+    if (pageCount.value === 1) return list
+    return list
       .concat(ellipsisLeftShow.value ? '...' : [])
       .concat(center.value)
       .concat(ellipsisRightShow.value ? '...' : [])
-      .concat(pageCount.value > 1 ? pageCount.value : [])
-  )
+      .concat(pageCount.value)
+  })
 
   function handlePrev() {
     if (props.modelValue > 1) {
@@ -94,7 +98,8 @@
     }
   }
 
-  function handleJumpTo(item: number | string) {
+  function handleJumpTo(item: number | string | null) {
+    if (!item) return
     const num = Number(item)
     if (isNaN(num)) return
     emits('update:modelValue', num)
