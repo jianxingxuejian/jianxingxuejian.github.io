@@ -66,7 +66,7 @@
       .concat(ellipsisLeftShow.value ? '...' : [])
       .concat(center.value)
       .concat(ellipsisRightShow.value ? '...' : [])
-      .concat(pageCount.value.toString())
+      .concat(pageCount.value > 1 ? pageCount.value.toString() : [])
   )
 
   function handlePrev() {
