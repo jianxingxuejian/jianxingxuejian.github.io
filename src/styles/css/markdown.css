@@ -12,12 +12,6 @@ html:not(.dark) .shiki-dark {
   background-color: rgba(248, 248, 248, 0.95);
 }
 
-/* @media (min-width: 1024px) {
-  .prose {
-    margin-bottom: 20px;
-  }
-} */
-
 .prose h1 {
   text-align: center;
 }
@@ -42,16 +36,21 @@ html:not(.dark) .shiki-dark {
   overflow-x: auto;
 }
 
-.shiki-container pre {
-  padding: 0.5rem 1rem 0.5rem 1rem;
-}
-
 .prose p code {
   background-color: #e5e5e5;
 }
 
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 1rem;
+}
+
 .prose .shiki {
   line-height: 1.4;
+}
+
+.shiki-container pre {
+  padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
 .shiki-light {
