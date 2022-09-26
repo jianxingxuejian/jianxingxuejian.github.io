@@ -32,10 +32,10 @@
         :show-button="false"
         :max="pageCount"
         placeholder=""
-        class="w-20 text-center"
+        class="w-15 text-center ml-3"
       />
       <span class="text-6">&nbsp;/&nbsp;</span>
-      <span class="text-6">123</span>
+      <span class="text-6">{{ pageCount }}</span>
     </div>
     <div
       class="h-7 text-4 px-3 ml-3 bg-white/50 flex-center rounded-md shadow"
