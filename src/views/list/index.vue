@@ -36,13 +36,15 @@
         </div>
       </TransitionGroup>
     </div>
-    <div class="flex-center">
-      <my-pagination
-        v-model="pagination.page"
-        :page-size="pagination.pageSize"
-        :item-count="pagination.itemCount"
-      />
-    </div>
+    <transition name="bottom" appear>
+      <div class="flex-center">
+        <my-pagination
+          v-model="pagination.page"
+          :page-size="pagination.pageSize"
+          :item-count="pagination.itemCount"
+        />
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -119,3 +121,13 @@
     document.body.scrollTop = 0
   })
 </script>
+
+<style lang="scss">
+  .bottom-enter-active {
+    transition: all 1s;
+  }
+  .bottom-enter-from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+</style>
