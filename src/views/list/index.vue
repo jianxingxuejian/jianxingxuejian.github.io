@@ -1,6 +1,6 @@
 <template>
   <div class="flex-col h-full">
-    <div id="list" class="h-[calc(100%-40px)]">
+    <div id="list" class="h-[calc(100%-32px)]">
       <TransitionGroup :css="false" @enter="onEnter">
         <div
           v-for="(item, index) in list"
@@ -36,7 +36,7 @@
         </div>
       </TransitionGroup>
     </div>
-    <div class="flex-center mt-12px">
+    <div class="flex-center">
       <my-pagination
         v-model="pagination.page"
         :page-size="pagination.pageSize"
@@ -95,14 +95,18 @@
 
   function autoResize() {
     const width = document.body.clientWidth
+    const height = document.body.clientHeight
+    const listHeight = document.getElementById('list')?.offsetHeight as number
     if (width < 640) {
-      pagination.pageSize = 4
+      if (height < 800) {
+        pagination.pageSize = 3
+      } else {
+        pagination.pageSize = 4
+      }
     } else if (width < 1024) {
       pagination.pageSize = 6
-    } else if (width < 1536) {
-      pagination.pageSize = 10
     } else {
-      pagination.pageSize = 6
+      pagination.pageSize = Math.floor(listHeight / 136)
     }
   }
 
@@ -112,6 +116,6 @@
 
   onActivated(() => {
     autoResize()
-    // document.body.scrollTop = 0
+    document.body.scrollTop = 0
   })
 </script>

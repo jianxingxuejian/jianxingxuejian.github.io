@@ -1,11 +1,12 @@
 <template>
   <div
-    class="px-5vw grid gap-x-6 h-full min-h-screen w-screen min-w-360px lg:grid-cols-[22fr_66fr] 2xl:grid-cols-[18fr_48fr_18fr]"
+    class="px-5vw grid gap-x-6 h-full min-h-screen w-screen min-w-280px lg:grid-cols-[22fr_66fr] 2xl:grid-cols-[18fr_48fr_18fr]"
   >
     <div
       class="order-1 mt-20px min-w-0 lg:(order-2 grid-row-span-2 mb-20px) 2xl:grid-row-a"
     >
       <layout-main />
+      <essay v-if="route.name !== 'list_index'" />
     </div>
 
     <transition name="aside-left" appear>
@@ -35,6 +36,7 @@
     LayoutClassify,
     LayoutMain
   } from './components'
+  const route = useRoute()
 </script>
 
 <style lang="scss">
