@@ -37,3 +37,13 @@ type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
   ? I
   : never
 ```
+
+**可能用到的类型定义手法：**
+
+- 互斥属性
+  ```typescript
+  type Test = ({ name: string } & { age?: never }) | ({ name?: never } & { age: number })
+  const test1: Test = { name: 'aaa' } // OK
+  const test2: Test = { age: 11 } // OK
+  const test3: Test = { name: 'aaa', age: 11 } // Error
+  ```
