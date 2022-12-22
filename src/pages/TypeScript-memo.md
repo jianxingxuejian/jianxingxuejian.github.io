@@ -46,4 +46,9 @@ type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
   const test1: Test = { name: 'aaa' } // OK
   const test2: Test = { age: 11 } // OK
   const test3: Test = { name: 'aaa', age: 11 } // Error
+
+  type Test1 = {} & ({ name: string; age: number } | { name?: never; age?: never })
+  const test4: Test1 = {} // OK
+  const test5: Test1 = { name: 'bbb', age: 18 } // OK
+  const test6: Test1 = { name: 'bbb' } // Error
   ```
